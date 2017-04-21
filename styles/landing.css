@@ -38,7 +38,7 @@ body.landing {
      opacity: 0;
      -webkit-transform: scaleX(0.9) translateY(3rem);
      -moz-transform: scaleX(0.9) translateY(3rem);
-     transform: scaleX(0.9) translateY(3rem);
+     transform: scaleX(2) translateY(2rem);
      -webkit-transition: all 0.25s ease-in-out;
      -moz-transition: all 0.25s ease-in-out;
      transition: all 0.25s ease-in-out;
