@@ -9,9 +9,17 @@ var animatePoints = function(points) {
              points[index].style.WebkitTransform = "scaleX(1) translateY(0)";
      }
 
-     for(var i=0; i<points.length; i++) {
-         revealPoint(i);
+     var forEach = function(callback){
+        callback();
      }
+
+     function myCallback (){
+        for(var i=0; i<revealPoint; i++){
+            revealPoint[i];
+        }
+     }
+
+     forEach(myCallback);
 };
 
 window.onload = function(){
