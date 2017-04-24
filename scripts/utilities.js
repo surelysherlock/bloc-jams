@@ -1,12 +1,6 @@
-var forEach = function(callback){
-    
-    callback();
-}
+var forEach = function(array,callback){
 
-function myCallback (){
-   for(var i=0; i<points; i++){
-        points[i];
+    for(var i=0; i < array.length; i++){
+        callback(array[i]);
     }
 }
-
-forEach(myCallback);
