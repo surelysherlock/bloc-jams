@@ -30,6 +30,21 @@
      ]
  };
 
+ var albumVirginia = {
+     title: 'Take Me Home',
+     artist: 'Solid A player',
+     label: 'GM',
+     year: '2005',
+     albumArtUrl: 'assets/images/album_covers/19.png',
+     songs: [
+         { title: 'Virginia Cake', duration: '2:28' },
+         { title: 'Justin Jay', duration: '9:01' },
+         { title: 'Relax and breath', duration: '2:25'},
+         { title: 'Red band trailer', duration: '2:14' },
+         { title: 'Rocky mount', duration: '4:15'}
+     ]
+ };
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -42,12 +57,13 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+
 var setCurrentAlbum = function(album) {
      // #1
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
+     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];     
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  
      // #2
@@ -67,4 +83,13 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     var album = [albumMarconi, albumPicasso, albumVirginia];
+     var index = 0;
+     albumImage.addEventListener('click',function(event){
+         setCurrentAlbum(album[index]);
+         index++;
+         if (index>2){
+            index =0;
+         }
+     });
  };
