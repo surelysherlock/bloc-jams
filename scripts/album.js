@@ -71,14 +71,15 @@ var setCurrentAlbum = function(album) {
 var findParentByClassName = function(element, targetClass){
     if(element){
         var currentParent = element.parentElement;
+        while(currentParent.className !== targetClass && currentParent.className !== null){
+            currentParent = currentParent.parentElement;
+        }
         if(currentParent === null){
             console.log("No Parent Found");
         }else if(currentParent.className === null){
             console.log("No parent found with" + targetclass + 'class');
         }
-        while(currentParent.className !== targetClass && currentParent.className !== null){
-            currentParent = currentParent.parentElement;
-        }
+        
         return currentParent;
     }    
 };
@@ -147,6 +148,7 @@ var currentlyPlayingSong = null;
              //revert the content back to the number
              // Selects first child element, which is the song-item-number element
              var songItem = getSongItem(event.target);
+             console.log('songItem:', songItem);
              var songItemNumber = songItem.getAttribute('data-song-number');
 
              if(songItemNumber !== currentlyPlayingSong){
