@@ -71,15 +71,14 @@ var setCurrentAlbum = function(album) {
 var findParentByClassName = function(element, targetClass){
     if(element){
         var currentParent = element.parentElement;
-        while(currentParent.className !== targetClass && currentParent.className !== null){
-            currentParent = currentParent.parentElement;
-        }
         if(currentParent === null){
             console.log("No Parent Found");
         }else if(currentParent.className === null){
             console.log("No parent found with" + targetclass + 'class');
         }
-        
+        while(currentParent.className !== targetClass && currentParent.className !== null){
+            currentParent = currentParent.parentElement;
+        }
         return currentParent;
     }    
 };
@@ -91,7 +90,7 @@ var getSongItem = function(element){
         case 'ion-play':
         case 'ion-pause':
             return findParentByClassName(element, 'song-item-number');
-        case 'ablum-view-song-item':
+        case 'album-view-song-item':
             return element.querySelector('.song-item-number');
         case 'song-item-title':
         case 'song-item-duration':
@@ -102,7 +101,8 @@ var getSongItem = function(element){
             return;
     }
 };
-/*This method, which we'll call getSongItem, should take an element and, based on that element's class name(s), use a switch statement that returns the element with the .song-item-number class.*/
+/*This method, which we'll call getSongItem, should take an element and, based on that
+ element's class name(s), use a switch statement that returns the element with the .song-item-number class.*/
 
 var clickHandler = function(targetElement){
     var songItem = getSongItem(targetElement);
@@ -140,6 +140,9 @@ var currentlyPlayingSong = null;
              if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
                 songItem.innerHTML = playButtonTemplate;
              }
+              if(songItem.getAttribute('data-song-number') == currentlyPlayingSong){
+                songItem.innerHTML = pauseButtonTemplate;
+             }
          }
      });
      
@@ -148,11 +151,13 @@ var currentlyPlayingSong = null;
              //revert the content back to the number
              // Selects first child element, which is the song-item-number element
              var songItem = getSongItem(event.target);
-             console.log('songItem:', songItem);
              var songItemNumber = songItem.getAttribute('data-song-number');
 
              if(songItemNumber !== currentlyPlayingSong){
                  songItem.innerHTML = songItemNumber;
+             }
+             if(songItemNumber === currentlyPlayingSong){
+                songItem.innerHTML = pauseButtonTemplate;
              }
          });
 
