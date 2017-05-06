@@ -4,6 +4,10 @@ body.album {
      background-attachment: fixed;
      background-position: center center;
      background-size: cover;
+     padding-bottom: 200px;
+     /*need padding bottom of album page which allows the user to scroll*/
+     /*to the bottom and still view all the content. prevents the bar*/
+     /*from hiding the content behind it */
  }
  
  .album-cover-art {
