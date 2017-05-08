@@ -139,6 +139,10 @@ var currentlyPlayingSong = null;
              if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
                 songItem.innerHTML = playButtonTemplate;
              }
+
+             if(songItem.getAttribute('data-song-number') === currentlyPlayingSong){
+                 songItem.innerHTML = pauseButtonTemplate;
+             }
          }
      });
      
@@ -151,6 +155,10 @@ var currentlyPlayingSong = null;
 
              if(songItemNumber !== currentlyPlayingSong){
                  songItem.innerHTML = songItemNumber;
+             }
+
+             if(songItemNumber === currentlyPlayingSong){
+                songItem.innerHTML = pauseButtonTemplate;
              }
          });
 
