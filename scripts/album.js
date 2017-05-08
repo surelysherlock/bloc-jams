@@ -90,7 +90,7 @@ var getSongItem = function(element){
         case 'ion-play':
         case 'ion-pause':
             return findParentByClassName(element, 'song-item-number');
-        case 'ablum-view-song-item':
+        case 'album-view-song-item':
             return element.querySelector('.song-item-number');
         case 'song-item-title':
         case 'song-item-duration':
@@ -139,6 +139,10 @@ var currentlyPlayingSong = null;
              if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
                 songItem.innerHTML = playButtonTemplate;
              }
+
+             if(songItem.getAttribute('data-song-number') === currentlyPlayingSong){
+                 songItem.innerHTML = pauseButtonTemplate;
+             }
          }
      });
      
@@ -151,6 +155,10 @@ var currentlyPlayingSong = null;
 
              if(songItemNumber !== currentlyPlayingSong){
                  songItem.innerHTML = songItemNumber;
+             }
+
+             if(songItemNumber === currentlyPlayingSong){
+                songItem.innerHTML = pauseButtonTemplate;
              }
          });
 
