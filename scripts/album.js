@@ -138,6 +138,8 @@ var currentlyPlayingSong = null;
 
              if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
                 songItem.innerHTML = playButtonTemplate;
+             }else{
+                 songItem.innerHTML = pauseButtonTemplate;
              }
 
              if(songItem.getAttribute('data-song-number') === currentlyPlayingSong){
@@ -155,6 +157,8 @@ var currentlyPlayingSong = null;
 
              if(songItemNumber !== currentlyPlayingSong){
                  songItem.innerHTML = songItemNumber;
+             }else{
+                 songItem.innerHTML = pauseButtonTemplate;
              }
 
              if(songItemNumber === currentlyPlayingSong){
