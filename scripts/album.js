@@ -141,11 +141,6 @@ var currentlyPlayingSong = null;
              }else{
                  songItem.innerHTML = pauseButtonTemplate;
              }
-
-             if(songItem.getAttribute('data-song-number') === currentlyPlayingSong){
-                 songItem.innerHTML = pauseButtonTemplate;
-             }
-         }
      });
      
      for(var i=0; i < songRows.length; i++) {
@@ -159,10 +154,13 @@ var currentlyPlayingSong = null;
                  songItem.innerHTML = songItemNumber;
              }else{
                  songItem.innerHTML = pauseButtonTemplate;
+<<<<<<< HEAD
              }
 
              if(songItemNumber === currentlyPlayingSong){
                 songItem.innerHTML = pauseButtonTemplate;
+=======
+>>>>>>> checkpoint-13
              }
          });
 
