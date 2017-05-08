@@ -90,7 +90,7 @@ var getSongItem = function(element){
         case 'ion-play':
         case 'ion-pause':
             return findParentByClassName(element, 'song-item-number');
-        case 'ablum-view-song-item':
+        case 'album-view-song-item':
             return element.querySelector('.song-item-number');
         case 'song-item-title':
         case 'song-item-duration':
