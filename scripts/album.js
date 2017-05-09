@@ -132,15 +132,15 @@ var currentlyPlayingSong = null;
          if (event.target.parentElement.className === 'album-view-song-item') {
              // Change the content from the number to the play button's HTML
              event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
-         }
+         
              var songItem = getSongItem(event.target);
 
              if(songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
                 songItem.innerHTML = playButtonTemplate;
+             }else{
+                songItem.innerHTML = pauseButtonTemplate;
              }
-             if(songItem.getAttribute('data-song-number') === currentlyPlayingSong){
-                 songItem.innerHTML = pauseButtonTemplate;
-             }
+         }
      });
      
      for(var i=0; i < songRows.length; i++) {
@@ -152,9 +152,8 @@ var currentlyPlayingSong = null;
 
              if(songItemNumber !== currentlyPlayingSong){
                  songItem.innerHTML = songItemNumber;
-             }
-             if(songItemNumber === currentlyPlayingSong){
-                 songItem.innerHTML =pauseButtonTemplate;
+             }else{
+                 songItem.innerHTML = pauseButtonTemplate;
              }
          });
 
