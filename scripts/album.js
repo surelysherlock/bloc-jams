@@ -45,17 +45,19 @@ var createSongRow = function(songNumber, songName, songLength) {
 
      var clickHandler = function(){
     var $songNumber = $(this).attr('data-song-number');
+    var $songNumberClass = $(this).find('.song-item-number');
+    console.log((this));
 
     if(currentlyPlayingSong === null) {
-        $(this).html(pauseButtonTemplate);
+        $songNumberClass.html(pauseButtonTemplate);
         currentlyPlayingSong = $songNumber;
     }else if(currentlyPlayingSong === $songNumber){
-        $(this).html(playButtonTemplate);
+        $songNumberClass.html(playButtonTemplate);
         currentlyPlayingSong = null;
     }else if(currentlyPlayingSong !== $songNumber){
         var currentlyPlayingSongElement = $('[data-song-number="'+ currentlyPlayingSong + '"]');
         currentlyPlayingSongElement.html(currentlyPlayingSongElement.attr('data-song-number'));
-        $(this).html(pauseButtonTemplate);
+        $songNumberClass.html(pauseButtonTemplate);
         currentlyPlayingSong = $songNumber;
     }
 };
