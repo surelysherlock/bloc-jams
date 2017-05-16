@@ -10,22 +10,6 @@ var createSongRow = function(songNumber, songName, songLength) {
  
      var $row = $(template);
 
-    //  var clickHandler = function(){
-    //     var $songNumber = $(this).attr('data-song-number');
-
-    // if(currentlyPlayingSong === null) {
-    //     $songNumberClass.html(pauseButtonTemplate);
-    //     currentlyPlayingSong = $songNumber;
-    // }else if(currentlyPlayingSong === $songNumber){
-    //     $songNumberClass.html(playButtonTemplate);
-    //     currentlyPlayingSong = null;
-    // }else if(currentlyPlayingSong !== $songNumber){
-    //     var currentlyPlayingSongElement = $('[data-song-number="'+ currentlyPlayingSong + '"]');
-    //     currentlyPlayingSongElement.html(currentlyPlayingSongElement.attr('data-song-number'));
-    //     $songNumberClass.html(pauseButtonTemplate);
-    //     currentlyPlayingSong = $songNumber;
-    // }
-
         var clickHandler = function() {
         var songNumber = parseInt($(this).attr('data-song-number'));
         //var albumNumber = currentAlbum;
