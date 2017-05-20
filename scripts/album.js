@@ -47,7 +47,7 @@ var createSongRow = function(songNumber, songName, songLength) {
          var $songNumberClass = $(this).find('.song-item-number');
          var $songNumber = parseInt($songNumberClass.attr('data-song-number'));
          
-         if($songNumber !== currentlyPlayingSongNumber){
+         if($songNumber !== currentlyPlayingSongNumber || currentSoundFile.isPaused()){
             $songNumberClass.html(playButtonTemplate);
          }else{
              $songNumberClass.html(pauseButtonTemplate);
@@ -60,8 +60,10 @@ var createSongRow = function(songNumber, songName, songLength) {
          
          if($songNumber !== currentlyPlayingSongNumber){
              $songNumberClass.html(songNumber);
-         }else if($songNumber === currentlyPlayingSongNumber){
+         }else if($songNumber === currentlyPlayingSongNumber && currentSoundFile.isPaused() !== true){
              $songNumberClass.html(pauseButtonTemplate);
+         }else{
+             $songNumberClass.html(playButtonTemplate);
          }
      };
      $row.find('.song-item-number').click(clickHandler);
