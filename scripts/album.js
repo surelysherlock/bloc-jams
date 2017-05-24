@@ -4,7 +4,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         '<tr class="album-view-song-item">'
       + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
       + '  <td class="song-item-title">' + songName + '</td>'     
-      + '  <td class="song-item-duration">' + songLength + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
       + '</tr>'
       ;
  
@@ -201,6 +201,7 @@ var updatePlayerBarSong = function (){
      $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
      $('.currently-playing .artist-name').text(currentAlbum.artist);
      $('.main-controls .play-pause').html(playerBarPauseButton);
+     setTotalTimeInPlayerBar(filterTimeCode(currentSongFromAlbum.duration));
 };
 
 
@@ -211,6 +212,7 @@ var updateSeekBarWhileSongPlays = function(){
             var $seekBar = $('.seek-control .seek-bar');
 
             updateSeekPercentage($seekBar, seekBarFillRatio);
+            setCurrentTimeInPlayerBar(filterTimeCode(this.getTime()));
         });
     }
 };
@@ -280,6 +282,27 @@ var togglePlayFromPlayerBar = function (){
         currentSoundFile.pause();
     }
 };
+
+var setCurrentTimeInPlayerBar = function (currentTime){
+    $('.seek-control').find('.current-time').text(currentTime);
+};  
+
+var setTotalTimeInPlayerBar = function(totalTime){
+    $('.seek-control').find('.total-time').text(totalTime);
+};
+
+var filterTimeCode = function (timeInSeconds){
+    var timeInInteger = parseFloat(timeInSeconds);
+    var wholeSeconds = timeInInteger-((Math.floor(timeInInteger/60))*60);
+    var wholeMinutes = (Math.floor(timeInInteger/60));
+    if(timeInSeconds <10){
+        return (wholeMinutes + ":0" + Math.floor(wholeSeconds));
+    }else{
+         return (wholeMinutes + ":" + Math.floor(wholeSeconds));
+    }
+   
+};
+
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>'; 
