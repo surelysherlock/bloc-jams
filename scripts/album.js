@@ -299,9 +299,5 @@ var $playPause = $('.main-controls .play-pause');
      setupSeekBars();
      $previousButton.click(previousSong);
      $nextButton.click(nextSong);
-<<<<<<< HEAD
-     
-=======
      $playPause.click(togglePlayFromPlayerBar);
->>>>>>> assignment-20
  });
